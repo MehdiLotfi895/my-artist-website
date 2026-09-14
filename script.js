@@ -200,3 +200,118 @@ if (
 });
 
 });
+
+
+/* =====================================
+HOMEPAGE VIDEO PLAYER
+===================================== */
+
+const homepageVideosSection = document.querySelector(
+  'section#videos.feature-section'
+);
+
+if (homepageVideosSection) {
+
+  const videoFeature =
+    homepageVideosSection.querySelector(".video-feature");
+
+  const videoModal =
+    document.getElementById("videoModal");
+
+  const modalVideo =
+    document.getElementById("modalVideo");
+
+  const modalVideoSource =
+    document.getElementById("modalVideoSource");
+
+  const videoModalClose =
+    document.getElementById("videoModalClose");
+
+  const videoModalBackdrop =
+    document.querySelector(".video-modal-backdrop");
+
+
+  if (
+    videoFeature &&
+    videoModal &&
+    modalVideo &&
+    modalVideoSource
+  ) {
+
+    /* PLAY VIDEO */
+
+    videoFeature.addEventListener("click", function () {
+
+      const videoPath =
+        videoFeature.getAttribute("data-video");
+
+      if (!videoPath) return;
+
+      modalVideoSource.src = videoPath;
+
+      modalVideo.load();
+
+      videoModal.classList.add("active");
+
+      document.body.classList.add("video-open");
+
+      modalVideo.play().catch(() => {});
+
+    });
+
+
+    /* CLOSE VIDEO */
+
+    function closeHomepageVideo() {
+
+      modalVideo.pause();
+
+      modalVideo.currentTime = 0;
+
+      modalVideoSource.src = "";
+
+      videoModal.classList.remove("active");
+
+      document.body.classList.remove("video-open");
+
+    }
+
+
+    if (videoModalClose) {
+
+      videoModalClose.addEventListener(
+        "click",
+        closeHomepageVideo
+      );
+
+    }
+
+
+    if (videoModalBackdrop) {
+
+      videoModalBackdrop.addEventListener(
+        "click",
+        closeHomepageVideo
+      );
+
+    }
+
+
+    /* ESC KEY */
+
+    document.addEventListener("keydown", function (event) {
+
+      if (
+        event.key === "Escape" &&
+        videoModal.classList.contains("active")
+      ) {
+
+        closeHomepageVideo();
+
+      }
+
+    });
+
+  }
+
+}

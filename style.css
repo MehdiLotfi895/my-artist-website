@@ -1258,3 +1258,392 @@ height: 70px;
   .card-grid { grid-template-columns: 1fr; }
   .page-content { padding: 80px 8%; }
 }
+/* =====================================
+   VIDEO CARDS
+===================================== */
+
+.video-card {
+  cursor: pointer;
+}
+
+.video-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #111;
+}
+
+.video-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.7s ease,
+    filter 0.5s ease;
+}
+
+.video-card:hover .video-image img {
+  transform: scale(1.05);
+  filter: brightness(0.72);
+}
+
+
+/* =====================================
+   VIDEO PLAY BUTTON
+===================================== */
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 72px;
+  height: 72px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  background: rgba(17, 17, 17, 0.2);
+
+  backdrop-filter: blur(8px);
+
+  color: #fff;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.video-play span {
+  font-size: 18px;
+
+  margin-left: 3px;
+}
+
+.video-card:hover .video-play {
+  background: rgba(17, 17, 17, 0.7);
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.08);
+}
+
+
+/* =====================================
+   VIDEO MODAL
+===================================== */
+
+.video-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.video-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Dark background */
+
+.video-modal-backdrop {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.92);
+
+  cursor: pointer;
+}
+
+
+/* Video container */
+
+.video-modal-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1200px, 94vw);
+
+  max-height: 90vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Video */
+
+.video-modal-content video {
+  width: 100%;
+
+  max-height: 85vh;
+
+  display: block;
+
+  background: #000;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Close button */
+
+.video-modal-close {
+  position: absolute;
+
+  top: -55px;
+  right: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.video-modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+
+  transform: rotate(90deg);
+}
+
+
+/* Prevent page scrolling while video is open */
+
+body.video-open {
+  overflow: hidden;
+}
+
+
+/* =====================================
+   MOBILE VIDEO
+===================================== */
+
+@media (max-width: 600px) {
+
+  .video-play {
+    width: 60px;
+    height: 60px;
+  }
+
+  .video-play span {
+    font-size: 15px;
+  }
+
+  .video-modal {
+    padding: 20px;
+  }
+
+  .video-modal-content {
+    width: 100%;
+  }
+
+  .video-modal-content video {
+    max-height: 75vh;
+  }
+
+  .video-modal-close {
+    top: -50px;
+    right: 0;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 25px;
+  }
+
+}
+
+/* =====================================
+   HOMEPAGE VIDEO
+===================================== */
+
+.video-feature {
+  cursor: pointer;
+}
+
+.video-feature img {
+  transition:
+    transform 0.8s ease,
+    filter 0.5s ease;
+}
+
+.video-feature:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.72);
+}
+
+.video-feature .play-button {
+  z-index: 2;
+}
+
+
+/* =====================================
+   VIDEO MODAL
+===================================== */
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.video-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.92);
+
+  cursor: pointer;
+}
+
+.video-modal-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1200px, 94vw);
+}
+
+.video-modal-content video {
+  display: block;
+
+  width: 100%;
+  max-height: 85vh;
+
+  background: #000;
+
+  object-fit: contain;
+}
+
+
+/* CLOSE BUTTON */
+
+.video-modal-close {
+  position: absolute;
+
+  top: -55px;
+  right: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 50%;
+
+  background: transparent;
+  color: #fff;
+
+  font-size: 30px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.video-modal-close:hover {
+  background: rgba(255,255,255,0.15);
+  transform: rotate(90deg);
+}
+
+
+/* STOP PAGE SCROLL */
+
+body.video-open {
+  overflow: hidden;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .video-modal {
+    padding: 20px;
+  }
+
+  .video-modal-content video {
+    max-height: 75vh;
+  }
+
+  .video-modal-close {
+    top: -50px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 25px;
+  }
+
+}
